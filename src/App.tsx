@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route } from 'react-router-dom';
+import Login from './components/login/Login';
+//material ui and styles
 import './App.css';
-
-const App: React.FC = () => {
+import { withStyles } from '@material-ui/core';
+import styles from './styles/routingContainer';
+import Signup from './components/signup/Signup';
+import Dashboard from './components/dashboard/Dashboard';
+const App: React.FC = (props: any) => {
+  const { classes } = props;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.routingContainer}>
+      <Route path="/login" component={Login} />
+      <Route path="/signup" component={Signup} />
+      <Route path="/dashboard" component={Dashboard} />
     </div>
   );
-}
+};
 
-export default App;
+export default withStyles(styles)(App);
