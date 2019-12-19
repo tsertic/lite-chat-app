@@ -1,3 +1,5 @@
+import { fade } from '@material-ui/core/styles';
+
 const styles = (theme: any) => {
   return {
     logIn: {
@@ -17,7 +19,21 @@ const styles = (theme: any) => {
       justifyContent: 'center',
       boxShadow: '2px 2px 6px rgba(134,231,100,0.9)',
       padding: theme.spacing(4)
-    }
+    },
+    submitButton: {
+      marginTop: theme.spacing(2),
+      '&:hover': {
+        background: 'lightgreen'
+      }
+    },
+    rootInput: {
+      borderColor: 'rgba(134,231,100,0.9) !important',
+
+      '&.Mui-focused.MuiInput-underline:after': {
+        borderColor: 'rgba(134,231,100,0.9) !important'
+      }
+    },
+    cssInput: {}
   };
 };
 
