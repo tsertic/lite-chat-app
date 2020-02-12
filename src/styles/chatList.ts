@@ -1,5 +1,9 @@
 const styles = (theme: any) => {
-  return {};
+  return {
+    root: {
+      width: '500px'
+    }
+  };
 };
 
 export default styles;
