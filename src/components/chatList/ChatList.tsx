@@ -26,6 +26,7 @@ const ChatList = (props: any) => {
     return (
       <main className={classes.root}>
         <Button
+          fullWidth={true}
           variant="contained"
           color="primary"
           className={classes.newChatBtn}

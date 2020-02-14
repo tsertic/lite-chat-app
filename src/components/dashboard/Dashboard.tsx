@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import styles from './../../styles/dashBoard';
 import ChatList from '../chatList/ChatList';
-import styles from './Dashboard.module.css';
+
 import { auth, firestore } from './../../firebase/firebase_utils';
+import { withStyles, Button } from '@material-ui/core';
+import ChatView from '../chatView/ChatView';
 const Dashboard = (props: any) => {
-  const { history } = props;
+  const { history, classes } = props;
   const [selectedChat, setSelectedChat] = useState(null);
   const [newChatFormVisible, setNewChatFormVisible] = useState(false);
   const [userEmail, setUserEmail] = useState<string | null>(null);
@@ -34,10 +37,9 @@ const Dashboard = (props: any) => {
       }
     });
   }, []);
-  console.log(chats);
+
   return (
-    <div className={styles.Dashboard}>
-      <p>{userEmail}</p>
+    <div>
       <ChatList
         history={history}
         newChatBtnFn={newChatBtnClicked}
@@ -46,15 +48,17 @@ const Dashboard = (props: any) => {
         userEmail={userEmail}
         selectedChatIndex={selectedChat}
       />
-      <button
+
+      <Button
         onClick={() => {
           auth.signOut();
         }}
       >
-        Log Out
-      </button>
+        Sign out
+      </Button>
+      <ChatView />
     </div>
   );
 };
 
-export default Dashboard;
+export default withStyles(styles)(Dashboard);
