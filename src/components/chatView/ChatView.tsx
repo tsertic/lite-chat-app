@@ -4,7 +4,7 @@ import styles from './../../styles/ChatView';
 const ChatView = (props: any) => {
   const { classes } = props;
 
-  return <div>Chat View</div>;
+  return <div className={classes.content}>Chat View</div>;
 };
 
 export default withStyles(styles)(ChatView);

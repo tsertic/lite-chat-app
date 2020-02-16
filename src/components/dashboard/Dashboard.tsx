@@ -7,18 +7,19 @@ import { withStyles, Button } from '@material-ui/core';
 import ChatView from '../chatView/ChatView';
 const Dashboard = (props: any) => {
   const { history, classes } = props;
-  const [selectedChat, setSelectedChat] = useState(null);
+  const [selectedChat, setSelectedChat] = useState<any>(0);
   const [newChatFormVisible, setNewChatFormVisible] = useState(false);
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [chats, setChats] = useState<any>([]);
 
   const selectChat = (chatIndex: any) => {
     console.log('selected a chat');
+    setSelectedChat(chatIndex);
   };
 
   const newChatBtnClicked = () => {
     setNewChatFormVisible(true);
-    setSelectedChat(null);
+    setSelectedChat(0);
     console.log('button click');
   };
   useEffect(() => {
@@ -56,7 +57,9 @@ const Dashboard = (props: any) => {
       >
         Sign out
       </Button>
-      <ChatView />
+      {!newChatFormVisible && (
+        <ChatView user={userEmail} chat={chats[selectedChat]} />
+      )}
     </div>
   );
 };
